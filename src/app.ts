@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { getLogLevel } from './utils';
 import { connectDB } from './utils/db';
+import routes from './routes';
 
 const main = async () => {
     const currentLogLevel = getLogLevel();
@@ -14,6 +15,8 @@ const main = async () => {
 
     const app = express();
     app.use(morgan('dev'));
+
+    app.use('/api/v1', routes);
 
     const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
