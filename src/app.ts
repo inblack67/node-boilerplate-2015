@@ -2,18 +2,19 @@ import logger from 'loglevel';
 import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import { getLogLevel } from './utils';
+import { getCurrentLogLevel } from './utils';
 import { connectDB } from './utils/db';
 import routes from './routes';
 
 const main = async () => {
-    const currentLogLevel = getLogLevel();
+    const currentLogLevel = getCurrentLogLevel();
     logger.setLevel(currentLogLevel);
     dotenv.config();
 
     await connectDB();
 
     const app = express();
+    app.use(express.json());
     app.use(morgan('dev'));
 
     app.use('/api/v1', routes);

@@ -1,6 +1,6 @@
 import { LogLevelDesc } from 'loglevel';
 
-export const getLogLevel = (): LogLevelDesc => {
+export const getCurrentLogLevel = (): LogLevelDesc => {
     switch (process.env.NODE_ENV) {
         case 'production':
             return 'error';
