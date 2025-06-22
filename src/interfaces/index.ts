@@ -11,6 +11,7 @@ export interface ISurvey extends Document {
     title: string;
     description: string;
     userId: mongoose.Types.ObjectId;
+    
 }
 
 export interface IQuestion extends Document {

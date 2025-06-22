@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { ISurvey } from '../interfaces';
 
 const SurveySchema = new mongoose.Schema<ISurvey>(
@@ -22,5 +22,5 @@ const SurveySchema = new mongoose.Schema<ISurvey>(
     },
 );
 
-export const SurveyModel =
+export const SurveyModel: Model<ISurvey> =
     mongoose.models.Survey || mongoose.model('Survey', SurveySchema);
